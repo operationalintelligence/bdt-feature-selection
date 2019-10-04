@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bdt-feature-selection  
+  namespace: operational-inteligence
+  labels:
+    k8s-app: bdt-feature-selection
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: bdt-feature-selection
+  template:
+    metadata:
+      labels:
+        k8s-app: bdt-feature-selection
+    spec:
+      containers:
+      - name: bdt-feature-selection
+        image: /bdt-feature-selection:latest
+        imagePullPolicy: Always
+        # command: ["python"]
+        # args: ["manage.py runserver 0.0.0.0:80"]
+        command: ["sh"]
+        args: ["run.sh"]
+        ports:
+          - containerPort: 80
+        # livenessProbe:
+        #   httpGet:
+        #     scheme: HTTP
+        #     path: /healthz
+        #     port: 80
+        #   periodSeconds: 60
+        #   initialDelaySeconds: 60
+        #   timeoutSeconds: 10
+        volumeMounts:
+        - name: frontend-conf-volume
+          mountPath: "/usr/src/app/config/"
+      volumes:
+      - name: frontend-conf-volume
+        secret:
+          secretName: config-bdtfs
+          items:
+          - key: conf
+            path: config.ini      
