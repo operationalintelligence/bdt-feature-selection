@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: bdt-feature-selection
-  namespace: operational-inteligence
+  namespace: operational-intelligence
   labels:
     k8s-app: bdt-feature-selection
 spec:
@@ -19,7 +19,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: bdt-feature-selection
-  namespace: operational-inteligence
+  namespace: operational-intelligence
   labels:
     k8s-app: bdt-feature-selection
   annotations:

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bdt-feature-selection  
-  namespace: operational-inteligence
+  namespace: operational-intelligence
   labels:
     k8s-app: bdt-feature-selection
 spec:
