@@ -1,8 +1,8 @@
-# Error log clustering
+# BDT feature selection
 
 ## Short description
 The tool is built on Django and ElasticSearch as data source.
-The tool ....
+It identifies which job configuration option best determines if a job will fail or not.
 
 
 ## Configuration
